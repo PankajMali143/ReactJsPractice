@@ -1,2 +1,2 @@
-# ReactJsPractice
+# practiceJS
 Created with CodeSandbox
