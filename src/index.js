@@ -16,7 +16,6 @@ addUser.addEventListener("click", async () => {
   const user = userJson.results[0];
   appState.push(user);
 
-  console.log("fhsdjf", appState);
   domRender(appState);
 });
 
