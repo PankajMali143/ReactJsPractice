@@ -3,6 +3,9 @@ console.log(api.length);
 
 const addUser = document.getElementById("user-btn");
 const Mydiv = document.getElementById("app");
+const newdiv = document.getElementById("user-list");
+
+const appState = [];
 
 addUser.addEventListener("click", async () => {
   const userData = await fetch(api, {
@@ -11,12 +14,20 @@ addUser.addEventListener("click", async () => {
 
   const userJson = await userData.json();
   const user = userJson.results[0];
-  console.log(user);
+  appState.push(user);
 
-  const userEle = document.createElement("div");
-  userEle.innerHTML = `<div>
-  ${user.name.title} ${user.name.first} ${user.name.last}
+  console.log("fhsdjf", appState);
+  domRender(appState);
+});
+
+const domRender = (stateArr) => {
+  newdiv.innerHTML = null;
+  stateArr.forEach((userObj) => {
+    const userEle = document.createElement("div");
+    userEle.innerHTML = `<div>
+  ${userObj.name.title} ${userObj.name.first} ${userObj.name.last}
   </div>`;
 
-  Mydiv.appendChild(userEle);
-});
+    newdiv.appendChild(userEle);
+  });
+};
