@@ -2,7 +2,7 @@ const api = `https://randomuser.me/api`;
 console.log(api.length);
 
 const addUser = document.getElementById("user-btn");
-const Mydiv = document.getElementById("app");
+const searchInput = document.getElementById("search");
 const newdiv = document.getElementById("user-list");
 
 const appState = [];
@@ -27,7 +27,13 @@ const domRender = (stateArr) => {
     userEle.innerHTML = `<div>
   ${userObj.name.title} ${userObj.name.first} ${userObj.name.last}
   </div>`;
-
     newdiv.appendChild(userEle);
   });
 };
+
+searchInput.addEventListener("keyup", (e) => {
+  const filterdAppState = appState.filter((user) =>
+    user.name.first.toLowerCase().includes(searchInput.value.toLowerCase())
+  );
+  domRender(filterdAppState);
+});
