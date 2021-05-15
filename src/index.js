@@ -14,7 +14,7 @@ const appState = [];
 class User {
   constructor(title, firstname, lastname, gender, email) {
     this.name = `${title} ${firstname} ${lastname}`;
-    this.emil = email;
+    this.email = email;
     this.gender = gender;
   }
 }
@@ -55,7 +55,6 @@ const domRender = (stateArr) => {
 
     userEle.innerHTML = `<div>
   Name :${userObj.name}
-
   <ol>
     <li>${userObj.gender}</li>
     <li>${userObj.email}</li>
@@ -86,6 +85,6 @@ sortdesc.addEventListener("click", () => {
 
 sortasc.addEventListener("click", () => {
   const stateArrCopy = [...appState];
-  stateArrCopy.sort((a, b) => (a.name > b.name ? 1 : -1));
+  stateArrCopy.sort((a, b) => (a.name < b.name ? -1 : 1));
   domRender(stateArrCopy);
 });
